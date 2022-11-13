@@ -10,6 +10,7 @@ export class MemberController {
 
     @Post('create')
     async addMember(@Body() newMember: IMember): Promise<IMember> {
+        console.log('mandalo ato');
         return await this.memberService.createMember(newMember);
     }
 

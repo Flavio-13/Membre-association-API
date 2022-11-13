@@ -4,9 +4,13 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Members } from "../../Entity/Member.entity";
 import { IMember } from "src/interface/Member.interface";
 import { Repository } from "typeorm";
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class MemberService {
+    
+    private readonly saltRound: number = 10;
+    
     constructor(
         @InjectRepository(Members)
         private userRepos: Repository<Members>
@@ -14,6 +18,7 @@ export class MemberService {
 
 
     async createMember(newMember: IMember): Promise<IMember> {
+        newMember.mdp = await bcrypt.hash(newMember.mdp, this.saltRound);
         return await this.userRepos.save(newMember);
     }
     
