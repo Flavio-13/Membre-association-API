@@ -1,6 +1,6 @@
 # Membre-association-API
 
-> Aller dans la branche **dev** et installer tous les dépendances avec ``npm install, puis lancer la commande  `npm run start:dev`
+> Aller dans la branche **dev** et installer tous les dépendances avec `npm install`, puis lancer la commande  `npm run start:dev`
 >
 > L'URL de base pour accéder à l'API est  http://localhost:3000/member
 
