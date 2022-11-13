@@ -18,7 +18,7 @@ export class MemberService {
     }
     
 
-    async getOneMemberById(idMember: number) {
+    async getOneMemberById(idMember: number): Promise<IMember> {
         return await this.userRepos.findOne({
             where: {
                 idMember: idMember

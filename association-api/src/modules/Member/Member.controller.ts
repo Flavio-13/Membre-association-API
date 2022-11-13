@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { IMember } from "src/interface/Member.interface";
 import { MemberService } from "./Member.service";
 
@@ -13,5 +13,21 @@ export class MemberController {
         return await this.memberService.createMember(newMember);
     }
 
+    @Post('update')
+    async updateMember(@Body() changeToMember: IMember): Promise<IMember> {
+        return await this.memberService.updateMember(changeToMember);
+    }
+
+    @Get('see/:id')
+    async getOneMember(@Param('id') id: string): Promise<IMember> {
+        return await this.memberService.getOneMemberById(parseInt(id));
+    }
+
+    @Delete('delete/:id')
+    async deleteMember(@Param('id') id: string) {
+        return await this.memberService.deleteMember(parseInt(id));
+    }
+
+    
     
 }

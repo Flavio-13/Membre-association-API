@@ -31,7 +31,7 @@ describe('memberController', () => {
         };
 
         it('should return a new member', async () => {
-            expect(await memberService.createMember(newMember)).toBe<IMember>(newMember);  
+            expect(await memberController.addMember(newMember)).toBe(newMember);  
         })
     })
 
